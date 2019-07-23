@@ -17,11 +17,13 @@ namespace DemoGrids.Controllers
             return View();
         }
 
-        public JsonResult GetCustomers(string sord, int page, int rows, string searchString)
+        public JsonResult GetCustomers(string sidx,string sord, int page, int rows, string searchString)
         {
-            // Create Instance of DatabaseContext class for Accessing Database.
-            DatabaseContext db = new DatabaseContext();
-            
+            try
+            {
+                // Create Instance of DatabaseContext class for Accessing Database.
+                DatabaseContext db = new DatabaseContext();
+
                 //Setting Paging
                 int pageIndex = Convert.ToInt32(page) - 1;
                 int pageSize = rows;
@@ -67,7 +69,12 @@ namespace DemoGrids.Controllers
                     rows = Results
                 };
                 return Json(jsonData, JsonRequestBehavior.AllowGet);
-            
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return new JsonResult();
+            }
         }
 
         [HttpPost]

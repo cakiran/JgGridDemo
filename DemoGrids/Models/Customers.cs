@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DemoGrids.Models
 {
-    [Table("Customers")]
+    [Table("CustomersNew")]
     public class Customers
     {
         [Key]
